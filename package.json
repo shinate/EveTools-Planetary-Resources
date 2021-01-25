@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.6",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-decorators": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/runtime": "^7.12.5",
+    "cheerio": "^1.0.0-rc.5",
+    "deasync": "^0.1.21",
+    "fs": "^0.0.1-security",
+    "got": "^11.8.0",
+    "jsdom": "^16.4.0",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1"
+  },
+  "name": "evetools",
+  "version": "1.0.0",
+  "main": "pull.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
