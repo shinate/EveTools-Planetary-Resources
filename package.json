@@ -15,7 +15,8 @@
     "got": "^11.8.0",
     "jsdom": "^16.4.0",
     "lodash": "^4.17.20",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "yargs": "^16.2.0"
   },
   "name": "evetools",
   "version": "1.0.0",

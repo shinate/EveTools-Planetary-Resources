@@ -1,3 +1,4 @@
+#!./node_modules/.bin/babel-node
 import got from 'got'
 import { map, keys, uniq, keyBy, has, values, find, mapValues, groupBy, orderBy, merge, filter } from 'lodash'
 import regionList from './src/region'
@@ -5,6 +6,8 @@ import resourceList from './src/resource'
 import { sleep } from 'deasync'
 import fs from 'fs'
 import cheerio from 'cheerio'
+import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
 
 // let rl2 = keyBy(resourceList2, 0)
 // console.log(values(mapValues(keyBy(resourceList, 'name'), (v, k) => {
@@ -16,9 +19,29 @@ import cheerio from 'cheerio'
 
 (async () => {
 
-  const base = 'C-7SBM'
-  const regionName = '逑瑞斯'
-  const { id: r_id, name: r_name } = find(regionList, { name: regionName })
+  const { region = null, base = null } = yargs(hideBin(process.argv))
+    .option('region', {
+      alias      : 'r',
+      require    : true,
+      type       : 'string',
+      description: '星区'
+    })
+    .option('base', {
+      alias      : 'b',
+      require    : true,
+      type       : 'string',
+      description: '基地'
+    })
+    .argv
+
+  // const base = 'C-7SBM'
+  // const regionName = '逑瑞斯'
+  const { id: r_id = null } = find(regionList, { name: region })
+
+  if (r_id === null) {
+    console.error('无效的星区')
+    process.exit(1)
+  }
 
   let resData = fs.existsSync(`dist/region_resource_${r_id}.json`)
     ? JSON.parse(fs.readFileSync(`dist/region_resource_${r_id}.json`).toString())
